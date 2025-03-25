@@ -304,7 +304,7 @@ const generarReportePorFechas = async () => {
 
   return (
     <div className="p-8">
-    <h1 className="text-3xl font-semibold text-center mb-8">Sistema de Cobro</h1>
+    <h1 className="text-3xl font-semibold text-center mb-8">Pagos en Efectivo UPS</h1>
 
     {/* Sección de reporte por fechas */}
     <div className="bg-white p-6 rounded-lg shadow-md mb-8">
