@@ -54,7 +54,7 @@ const Home = () => {
       // Crear el PDF como un ticket
       const doc = new jsPDF({
         unit: "mm",
-        format: [57, 200], // Tamaño típico de un ticket (80mm de ancho por 160mm de alto)
+        format: [57, 250], // Tamaño típico de un ticket (80mm de ancho por 160mm de alto)
       });
 
       doc.setFont("Arial", "bold");
@@ -120,7 +120,10 @@ const Home = () => {
       doc.text("presentar este ticket*", 23, 160, { align: "center" });
       
       doc.setFont("Arial", "bold");
-      doc.text("Gracias por su pago", 23, 170, { align: "center" });
+      doc.text("En caso de dudas o aclaraciones", 23, 170, { align: "center" });
+      doc.setFont("Arial", "normal");
+      doc.setFontSize(9);
+      doc.text("TEL: 961-655-2877", 23, 175, { align: "center" });
       
 
       // Mostrar PDF
