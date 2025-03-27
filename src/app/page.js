@@ -137,23 +137,31 @@ const Home = () => {
   };
 
 
-const handleDeleteCobro = async (id) => {
-  try {
-    const { error } = await supabase
-      .from('cobros')
-      .delete()
-      .eq('id', id);
-
-    if (error) {
+  const handleDeleteCobro = async (id) => {
+    // Preguntar al usuario si está seguro de eliminar
+    const confirmacion = window.confirm('¿Estás seguro que deseas eliminar este cobro?');
+    
+    if (!confirmacion) return; // Si el usuario cancela, no hacer nada
+  
+    try {
+      const { error } = await supabase
+        .from('cobros')
+        .delete()
+        .eq('id', id);
+  
+      if (error) {
+        console.error('Error al eliminar el cobro:', error);
+        alert('Ocurrió un error al eliminar el cobro');
+      } else {
+        // Actualizar la lista de cobros después de eliminar
+        fetchCobros();
+        alert('Cobro eliminado correctamente');
+      }
+    } catch (error) {
       console.error('Error al eliminar el cobro:', error);
-    } else {
-      // Actualizar la lista de cobros después de eliminar
-      fetchCobros();
+      alert('Ocurrió un error al eliminar el cobro');
     }
-  } catch (error) {
-    console.error('Error al eliminar el cobro:', error);
-  }
-};
+  };
 
 const generarReportePorFechas = async () => {
   try {
